@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="Main_div3">
+
+
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #a69c9a;" aria-label="Fourth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product">Каталог товаров</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login">Авторизация</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="about">
+
+    <div style="padding-left: 10px;">
+      <a class="w-100 btn  btn-primary btn-sm" style="width:200px!important"
+         onclick="javascript:history.back(); return false;">Назад</a>
+    </div>
+
+    <br>
+
+   <div class="container">
+  <div>
+    <h3>Информация о пользователе:</h3>
+    <p th:text="'Логин: ' + ${person.getLogin()}"/>
+    <p th:text="'Пароль: ' + ${person.getPassword()}"/>
+    <p th:text="'Роль: ' + ${person.getRole()}"/>
+    <p th:text="'Фамилия: ' + ${person.getLastname()}"/>
+    <p th:text="'Имя: ' + ${person.getFirstname()}"/>
+    <p th:text="'Отчество: ' + ${person.getPatronymic()}"/>
+    <p th:text="'Дата рождения: ' + ${person.getBirthday()}"/>
+    <p th:text="'Email: ' + ${person.getEmail()}"/>
+    <p th:text="'Номер телефона: ' + ${person.getPhoneNumber()}"/>
+
+
+   <div class="columPersonInfo">
+    <a class="w-100 btn  btn-primary " th:href="@{/admin/person/edit/{id}(id=${person.getId()})}">Редактировать пользователя</a>
+      <br>
+      <br>
+    <a class="btn btn-danger btn-lg active " th:href="@{/admin/person/delete/{id}(id=${person.getId()})}">Удалить пользователя</a>
+    </div>
+
+  </div>
+</div>
+
+
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">© 2022 Special Equipment</p>
+<!--        <ul class="nav col-md-4 justify-content-end">-->
+<!--          <li class="nav-item"><a href="/auth/index1" class="nav-link px-2 text-muted">Главная</a></li>-->
+<!--          <li class="nav-item"><a href="/product" class="nav-link px-2 text-muted">Каталог</a></li>-->
+<!--          <li class="nav-item"><a href="/auth/login" class="nav-link px-2 text-muted">Авторизация</a></li>-->
+<!--        </ul>-->
+      </footer>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Админ панель</title>
+</head>
+<body>
+<div class="Main_div3">
+
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #a69c9a;" aria-label="Fourth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+                    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product">Каталог товаров</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/login">Авторизация</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="about">
+
+
+<!--        <div class ="col-md-3 col-sm-12 col-12">-->
+<!--            <form th:method="post" th:action="@{/admin/orderList/search}">-->
+<!--                <label for="search"><b>Поиск по номеру заказа:</b></label>-->
+<!--                <fieldset>-->
+<!--                    <br>-->
+<!--                    <input class ="five" type="search" name="search" th:value="*{value_search}" id="search">-->
+<!--                    <br>-->
+<!--                    <input class = "six" type="submit" value="найти">-->
+<!--                </fieldset>-->
+<!--            </form>-->
+<!--        </div>-->
+
+        <div style="padding-right: 600px;">
+            <a href="/admin/person/searchPerson" class="w-100 btn btn btn-warning">Поиск, сортировка, фильтрация</a>
+        </div>
+
+
+        <h4>Найденные заказы по номеру:</h4>
+        <br>
+        <div th:each="order : ${value_search}">
+            <p th:text="'ID заказа:' + ${order.getId()}"></p>
+            <p th:text="'Номер заказа:' + ${order.getNumber()}"></p>
+            <p th:text="'Статус заказа:' + ${order.getStatus()}"></p>
+            <p th:text="'Логин пользователя:' + ${order.getPerson().getLogin()}"></p>
+
+            <hr>
+        </div>
+
+        <hr>
+        <h4>Все заказы:</h4>
+
+        <div class="row third align-items-center" th:each="order : ${orders}">
+            <div class="col-md-3 col-sm-12 col-12"></div>
+            <div class="item-2 col-md-6 col-sm-12 col-12 text-center"></div>
+            <p th:text="'ID заказа:' + ${order.getId()}"></p>
+            <p th:text="'Номер заказа:' + ${order.getNumber()}"></p>
+            <p th:text="'Статус заказа:' + ${order.getStatus()}"></p>
+
+            <p th:text="'Логин пользователя:' + ${order.getPerson().getLogin()}"></p>
+            <p th:text="'Название продукта' + ${order.getProduct().getTitle()}"></p>
+            <p th:text="'Колличество позиций:' + ${order.getCount()}"></p>
+            <p th:text="'Сумма заказа:' + ${order.getPrice()}"></p>
+            <p th:text="'Время заказа:' + ${order.getDateTime()}"></p>
+
+
+            <a th:href="@{/admin/order/delete/{id}(id=${order.getId()})}">Удалить заказ</a>
+
+
+        </div>
+ </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+body {
+    background: white;
+}
+
+.logo{
+    border-style: none;
+    border-width: 0px;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+img {
+    border-style: none;
+}
+#form_login {
+    background: white;
+    margin: 0 auto;
+    padding: 25px 0 0;
+    text-align: center;
+    width: 500px;
+    height: 440px;
+}
+#form_login h1 {
+    color: black;
+    font: bold 25px Arial;
+}
+#form_login input[type="text"],
+#form_login input[type="password"] {
+    border: 1px solid #b2a9aa;
+    color: #b2a9aa;
+    font: 14px Arial;
+    margin: 0 0 10px;
+    padding: 15px 10px 15px 40px;
+    width: 400px;
+}
+font {
+    color: #b2a9aa;
+    font: 14px Arial;
+}
+
+#username {
+    background-position: 4px -68px !important
+}
+
+#password {
+    background-position: 4px -101px !important
+}
+
+#form_login input[type="text"]:focus,
+#form_login input[type="password"]:focus {
+    border: 2px solid orange;
+    outline: none;
+}
+
+#form_login input[type="submit"] {
+    background: #e30611;
+    border: 1px solid darkorange;
+    color: white;
+    font: bold 16px Arial;
+    width: 450px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+div {
+    margin: 20px;
+}
+ .reg{
+     font: bold 16px Arial;
+
+     color: white;
+     background: grey;
+ }
+
+#form_login input[type="submit"]:hover {
+    background: darkred;
+}

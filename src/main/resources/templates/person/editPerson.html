@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="Main_div3">
+
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #a69c9a;" aria-label="Fourth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product">Каталог товаров</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login">Авторизация</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="about">
+
+
+    <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+    <div style="padding-left: 10px;">
+    <a class="w-100 btn  btn-primary btn-sm" style="width:200px!important"
+       onclick="javascript:history.back(); return false;">Назад</a>
+    <br>
+      </div>
+
+   <div class="container">
+  <h3>Редактирование пользователей</h3>
+  <form method="POST" th:action="@{/admin/person/edit/{id}(id=${editPerson.getId()})}" th:object="${editPerson}">
+    <label for="login">Введите логин: </label>
+    <input type="text"  th:field="*{login}" placeholder="Введите пароль" name="username" id="login">
+    <div style="color: red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+    <br>
+    <label for="password">Введите пароль: </label>
+    <input type="password" th:field="*{password}" placeholder="Введите пароль" name="password" id="password">
+    <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+    <br>
+    <label for="role">Введите роль: </label>
+    <input type="text" th:field="*{role}" placeholder="Введите роль" name="role" id="role">
+    <div style="color: red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+    <br>
+    <label for="last_name">Введите фамилию: </label>
+    <input type="text" th:field="*{lastname}" id="last_name">
+    <div style="color: red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
+    <br>
+    <label for="first_name">Введите имя: </label>
+    <input type="text" th:field="*{firstname}" id="first_name">
+    <div style="color: red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>
+    <br>
+    <label for="patronymic">Введите отчество: </label>
+    <input type="text" th:field="*{patronymic}" id="patronymic">
+    <br>
+    <label for="birthday">Введите возраст: </label>
+    <input type="text" th:field="*{birthday}" placeholder="01.01.1900" id="birthday">
+    <div style="color: red" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div>
+    <br>
+    <label for="email">Введите email: </label>
+    <input type="text" th:field="*{email}" id="email">
+    <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+    <br>
+    <label for="phone_number">Введите номер телефона: </label>
+    <input type="text" th:field="*{phoneNumber}" id="phone_number">
+    <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+    <br>
+    <br>
+    <div style="padding-right: 750px;">
+    <input class="w-100 btn  btn-primary btn-sm " type="submit" value="Редактировать">
+    </div>
+  </form>
+</div>
+
+</div>
+</div>
+</body>
+</html>

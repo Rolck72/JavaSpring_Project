@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Строительная техника</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+
+    <!--=======================================================================================================================================-->
+
+    <link data-require="bootstrap@3.3.7" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- Подключаем CSS DateTimePicker -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.css" />
+</head>
+<!-- Здесь будет форма -->
+<!-- Подключаем библиотеку jQuery -->
+<script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Подключаем локаль библиотеки moment -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/ru.js"></script>
+<!-- Подключаем библиотеку moment -->
+<script data-require="MomentJS@2.10.0" data-semver="2.10.0" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<!-- Подключаем js-файл Bootstrap -->
+<script data-require="bootstrap@3.3.7" data-semver="3.3.7" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Подключаем js-файл библиотеки DateTimePicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+<!--=======================================================================================================================================-->
+</head>
+<body>
+<!--<div class="item_1"><img src="/img/foto.jpg">  </div>-->
+ <div class="Main_div">
+     <!--=======================================================================================================================================-->
+     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #a69c9a;" aria-label="Fourth navbar example">
+         <div class="container-fluid">
+             <a class="navbar-brand" href="#"></a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+                     aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarsExample04">
+                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                     <li class="nav-item">
+                         <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="/product">Каталог товаров</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="/auth/login">Авторизация</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+     <!--=======================================================================================================================================-->
+     <div class="container col-xxl-8 px-4 py-5">
+         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+             <div class="col-lg-6">
+                 <h5 class="text-end" style= "'Times New Roman', Times, serif;font-style: italic; color:#4b4645 ">« Построим город будущего»</h5>
+                 <div class="d-grid gap-2 d-md-flex justify-content-md-start"> </div>
+             </div>
+             <div class="col-5 col-sm-8 col-lg-6">
+                 <div class="image" id="firstEl">
+                     <div class="adaptivny-slayder">
+                         <div class="adaptivny-slayder-lasekun">
+                             <div class="abusteku-deagulus">
+                                 <div class="adaptivny-slayder-lasekun">
+                               <p class="lead"  style= "'Times New Roman', Times, serif;font-style: italic; color:#4b4645">
+                                     Современная спецтехника по высоким стандартам.
+                                   Надежность - уверенность в завтрашнем дне. Экологичность, безопастность. </p>
+                                 </div>
+                             </div>
+                     </div>
+               </div>
+         </div>
+     </div>
+
+  <!--=======================================================================================================================================-->
+
+             <div class="container">
+                 <div class="row">
+                     <div class='col-sm-6'>
+                         <div class="form-group">
+                             <div class='input-group date' id='datetimepicker1'>
+                                 <input type='text' class="form-control" />
+                                 <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                             </div>
+                         </div>
+                     </div>
+                     <script type="text/javascript">
+                         $(function () {
+                             $('#datetimepicker1').datetimepicker();
+                         });
+                     </script>
+                 </div>
+             </div>
+
+
+
+  <!--=======================================================================================================================================-->
+
+     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+     <script th:src="@{/js/script.js}"></script>
+</body>
+</html>

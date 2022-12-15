@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Информация о товаре</title>
+</head>
+<body>
+
+<div class="general_div2">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #a69c9a;" aria-label="Fourth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+                    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product">Каталог товаров</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/login">Авторизация</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="about">
+        <div>
+            <a class="w-100 btn btn-primary" style="width:200px!important"
+               href="/product">Назад</a>
+        </div>
+
+        <h5 th:text="'Наименование: ' + ${product.getTitle()}"></h5>
+        <p th:text="'Описание: ' + ${product.getDescription()}"></p>
+        <h5 th:text="'Цена: ' + ${product.getPrice()}"></h5>
+        <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
+        <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+        <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+        <div th:each="img : ${product.getImageList()}">
+            <img th:src="'/img/' + ${img.getFileName()}" width="300px">
+        </div>
+
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-muted">© 2022 Special Equipment</p>
+                <ul class="nav col-md-4 justify-content-end">
+                    <li class="nav-item"><a href="/auth/index1" class="nav-link px-2 text-muted">Главная</a></li>
+                    <li class="nav-item"><a href="/product" class="nav-link px-2 text-muted">Каталог</a></li>
+                    <li class="nav-item"><a href="/auth/login" class="nav-link px-2 text-muted">Авторизация</a></li>
+                </ul>
+            </footer>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

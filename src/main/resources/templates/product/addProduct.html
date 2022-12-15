@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Добавление товара</title>
+</head>
+
+<body>
+<div class="Main_div3">
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #a69c9a;" aria-label="Fourth navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+                aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product">Каталог товаров</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/login">Авторизация</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="about">
+<h3>Добавление товара</h3>
+
+<form th:method="POST" th:action="@{/admin/product/add}" th:object="${product}" enctype="multipart/form-data">
+    <label for="title">Введите наименование: </label>
+    <input type="text" th:field="*{title}" placeholder="Наименование" id="title">
+    <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+    <br>
+    <br>
+    <label for="description">Введите описание: </label>
+    <textarea th:field="*{description}" placeholder="Описание" id="description"></textarea>
+    <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+    <br>
+    <br>
+    <label for="price">Введите цену: </label>
+    <input type="number" th:field="*{price}" min="1" step="0.00" id="price">
+    <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+    <br>
+    <br>
+    <label for="warehouse">Введите информацию о складе: </label>
+    <input type="text" th:field="*{warehouse}" placeholder="Склад" id="warehouse">
+    <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
+    <br>
+    <br>
+    <label for="category">Выберите категорию товара: </label>
+    <select name="category" th:field="*{category}" id="category">
+        <div th:each="element : ${category}">
+            <option th:text="${element.getName()}" th:value="${element.getId()}"></option>
+            <!--            <option th:text="${element.getName()}" th:value="${element.getId()}"></optional>-->
+        </div>
+    </select>
+    <br>
+    <br>
+    <label for="seller">Введите данные о продавце: </label>
+    <textarea th:field="*{seller}" placeholder="Продавец" id="seller"></textarea>
+    <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
+    <br>
+    <br>
+    <p style="color: red">Вы можете добавить до 5 фотографий. Первая фотография не может быть пустой</p>
+    <input  class="btn btn-outline-secondary btn-sm" type="file" name="file_one">
+    <input  class="btn btn-outline-secondary btn-sm" type="file" name="file_two">
+    <input  class="btn btn-outline-secondary btn-sm" type="file" name="file_three">
+    <input  class="btn btn-outline-secondary btn-sm" type="file" name="file_four">
+    <input  class="btn btn-outline-secondary btn-sm" type="file" name="file_five">
+    <br>
+    <br>
+    <input class="btn btn-success btn-lg" type="submit" value="Добавить">
+    <br>
+    <br>
+<!--    <input type="submit" value="Добавить">-->
+    <div>
+        <a class="w-100 btn  btn-primary" style="width:200px!important"
+           onclick="javascript:history.back(); return false;">Назад</a>
+    </div>
+</form>
+</div>
+</div>
+</body>
+</html>

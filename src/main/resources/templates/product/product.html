@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров: </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+    <title>Корзина</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<!-- ============================================================================= -->
+<div class="Main_div2">
+ <!-- ============================================================================= -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #a69c9a;" aria-label="Fourth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+                    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product">Каталог товаров</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/login">Авторизация</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- ==================================================================================================== -->
+   <div class="about2">
+          <form th:method="POST" th:action="@{/product/search}">
+                   <fieldset>
+        <legend>Выберите параметры для сортировки, поиска, фильтрации</legend>
+<!-- ======================================================================================================= -->
+     <div class ="colum">
+        <br>
+        <div class="form-floating">
+            <input type="search" class="form-control" placeholder="Введите пароль"  th:value="*{value_search}" name="search"
+                   id="search">
+            <label for="search">Поиск по наименованию</label>
+        </div>
+        <br>
+
+<!-- ====================================================================================================== -->
+<!--        <p>Цена, ₽</p>-->
+<!--        <label for="ot">От</label>-->
+<!--        <input type="text" name="ot"  th:value="*{value_price_ot}" id="ot">-->
+<!--        <label for="do">До</label>-->
+<!--        <input type="text" name="do"  th:value="*{value_price_do}" id="do">-->
+<!--        <br>-->
+
+   <!-- ====================================================================================================== -->
+        <form>
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="ot"  th:value="*{value_price_ot}" class="form-control" placeholder="От">
+                </div>
+                <div class="col">
+                    <input type="text" name="do"  th:value="*{value_price_do}" class="form-control" placeholder="До">
+                </div>
+            </div>
+        </form>
+     </div>
+ <!-- ====================================================================================================== -->
+
+
+        <br>
+        <label class="btn btn-primary btn-sm">
+        <input type="radio" id="ascending_price" name="price"  style="width:50px!important" value="sorted_by_ascending_price">
+        <label for="ascending_price">Отсортировать по возрастанию цены</label>
+        </label>
+        <br>
+        <br>
+        <label class="btn btn-primary btn-sm">
+        <input type="radio" id="descending_price" name="price"  style="width:50px!important" value="sorted_by_descending_price">
+        <label for="descending_price">Отсортировать по убыванию цены</label>
+        </label>
+        <br>
+        <br>
+
+<!-- ============================================================================================================== -->
+        <p>Категория товаров: </p>
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary btn-sm">
+                <input type="radio" id="furniture" name="category"  autocomplete="off" value="furniture">
+                <label for="clothes">Экскаваторы</label>
+            </label>
+            <label class="btn btn-primary btn-sm">
+                <input type="radio" id="appliances" name="category" autocomplete="off" value="appliances">
+                <label for="clothes">Погрузчики</label>
+            </label>
+            <label class="btn btn-primary btn-sm">
+                <input type="radio" id="clothes" name="category"  autocomplete="off"value="clothes">
+                <label for="clothes">Самосвалы</label>
+            </label>
+        </div>
+
+        <br>
+        <br>
+        <input type="submit" class="btn btn-warning" style="width:150px!important" value="Найти">
+<!-- ============================================================================================== -->
+    </fieldset>
+           </form>
+
+ <!-- ============================================================================================== -->
+    <h3>Результат: </h3>
+
+    <div th:each="product : ${search_product}">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+    <br>
+    <br>
+    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+</div>
+    <hr>
+    <h3>Доступные товары: </h3>
+    <div th:each="product : ${products}">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+    <br>
+    <br>
+        <a th:href="@{/product/info/{id}(id=${product.getId()})}" class="btn btn-primary" role="button" aria-pressed="true" th:text="${product.getTitle()}"></a>
+<!--    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}" id="title"></a>-->
+    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+        <hr>
+<!-- ========================================================================================================== -->
+
+<!-- ========================================================================================================== -->
+  </div>
+       <div class="container">
+           <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+               <p class="col-md-4 mb-0 text-muted">© 2022 Special Equipment</p>
+               <ul class="nav col-md-4 justify-content-end">
+                   <li class="nav-item"><a href="/auth/index1" class="nav-link px-2 text-muted">Главная</a></li>
+               </ul>
+           </footer>
+       </div>
+</div>
+</div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>

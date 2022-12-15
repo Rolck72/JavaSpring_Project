@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Админ панель</title>
+</head>
+<body>
+
+<div class ="col-md-3 col-sm-12 col-12">
+    <form th:method="post" th:action="@{/admin/orderList/search}">
+        <label for="search"><b>Поиск по номеру заказа:</b></label>
+        <fieldset>
+            <br>
+            <input class ="five" type="search" name="search" th:value="*{value_search}" id="search">
+            <br>
+            <input class = "six" type="submit" value="найти">
+        </fieldset>
+    </form>
+</div>
+
+
+<div style="padding-right: 600px;">
+    <a href="/admin/person/searchOrder" class="w-100 btn btn btn-warning">Поиск, сортировка, фильтрация</a>
+</div>
+
+</body>
+</html>

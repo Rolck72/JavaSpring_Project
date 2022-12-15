@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/index_style.css}">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="shortcut icon" th:href="@{/img/Logo.png}" type="image/x-icon">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="Main_div3">
+
+
+      <nav class="navbar navbar-expand-md navbar-light" style="background-color: #a69c9a;" aria-label="Fourth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/indexMain">Главная страница</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product">Каталог товаров</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login">Авторизация</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+
+
+  <div class="about">
+     <div class="container">
+
+       <a class="w-100 btn  btn-primary btn-sm" style="width:200px!important"
+          href="/admin">Назад</a>
+       <br>
+       <br>
+
+  <h3>Список пользователей: </h3>
+    <br>
+       <div>
+       <div style="padding-right: 600px;">
+    <a href="/admin/person/sorting_and_searching_and_filters" class="w-100 btn btn btn-warning">Поиск, сортировка, фильтрация</a>
+      </div>
+    <br>
+       <div style="padding-right: 950px;">
+     <div th:each="element : ${person}">
+       <br>
+      <a th:href="@{/admin/person/info/{id}(id=${element.getId()})}"  class="btn btn-info "  th:text="${element.getLastname()}"></a>
+      </div>
+       </div>
+       </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+</div>
+
+</body>
+
+
+
+</html>
